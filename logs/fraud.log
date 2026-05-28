@@ -1,0 +1,32 @@
+🚨 Fraud Transaction Detected
+2026-05-28 18:47:42.170832 - 🚨 Fraud Transaction Detected - Amount: 70000
+2026-05-28 18:52:08.189174 | Transaction ID: 4983 | Amount: ₹66264 | 🚨 FRAUD DETECTED
+2026-05-28 18:52:08.189221 | Transaction ID: 1227 | Amount: ₹51882 | 🚨 FRAUD DETECTED
+2026-05-28 18:52:08.189228 | Transaction ID: 2565 | Amount: ₹76764 | 🚨 FRAUD DETECTED
+2026-05-28 18:52:08.189233 | Transaction ID: 7553 | Amount: ₹24010 | ✅ SAFE
+2026-05-28 18:52:08.189620 | Transaction ID: 1697 | Amount: ₹71457 | 🚨 FRAUD DETECTED
+2026-05-28 18:52:08.189632 | Transaction ID: 1436 | Amount: ₹46486 | ✅ SAFE
+2026-05-28 18:52:08.189638 | Transaction ID: 9807 | Amount: ₹79224 | 🚨 FRAUD DETECTED
+2026-05-28 18:52:08.189659 | Transaction ID: 6706 | Amount: ₹28113 | ✅ SAFE
+2026-05-28 18:52:08.189679 | Transaction ID: 4069 | Amount: ₹34222 | ✅ SAFE
+2026-05-28 18:52:08.189703 | Transaction ID: 5233 | Amount: ₹51169 | 🚨 FRAUD DETECTED
+2026-05-28 18:54:31.373918 | Transaction ID: 4740 | Amount: ₹62294 | FRAUD
+2026-05-28 18:54:31.374027 | Transaction ID: 4945 | Amount: ₹58650 | FRAUD
+2026-05-28 18:54:31.374050 | Transaction ID: 8712 | Amount: ₹4592 | SAFE
+2026-05-28 18:54:31.374059 | Transaction ID: 4553 | Amount: ₹98441 | FRAUD
+2026-05-28 18:54:31.374065 | Transaction ID: 9399 | Amount: ₹77144 | FRAUD
+2026-05-28 18:54:31.374070 | Transaction ID: 4152 | Amount: ₹68211 | FRAUD
+2026-05-28 18:54:31.374075 | Transaction ID: 8964 | Amount: ₹5000 | SAFE
+2026-05-28 18:54:31.374080 | Transaction ID: 3669 | Amount: ₹22753 | SAFE
+2026-05-28 18:54:31.374098 | Transaction ID: 8469 | Amount: ₹74736 | FRAUD
+2026-05-28 18:54:31.374119 | Transaction ID: 5140 | Amount: ₹69743 | FRAUD
+2026-05-28 18:57:00.860729 | Transaction ID: 6168 | Amount: ₹59327 | FRAUD
+2026-05-28 18:57:00.860771 | Transaction ID: 3416 | Amount: ₹33321 | SAFE
+2026-05-28 18:57:00.860779 | Transaction ID: 7196 | Amount: ₹56646 | FRAUD
+2026-05-28 18:57:00.860785 | Transaction ID: 1224 | Amount: ₹28959 | SAFE
+2026-05-28 18:57:00.860790 | Transaction ID: 8887 | Amount: ₹12835 | SAFE
+2026-05-28 18:57:00.860795 | Transaction ID: 3404 | Amount: ₹95196 | FRAUD
+2026-05-28 18:57:00.860799 | Transaction ID: 6907 | Amount: ₹93197 | FRAUD
+2026-05-28 18:57:00.860803 | Transaction ID: 9100 | Amount: ₹36331 | SAFE
+2026-05-28 18:57:00.860808 | Transaction ID: 5574 | Amount: ₹77723 | FRAUD
+2026-05-28 18:57:00.860812 | Transaction ID: 3569 | Amount: ₹34439 | SAFE
