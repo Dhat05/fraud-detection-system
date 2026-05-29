@@ -1,53 +1,49 @@
-from datetime import datetime
-import random
 import csv
 
-log_file = open("logs/fraud.log", "a")
+print("=" * 50)
+print("      BANK FRAUD DETECTION SYSTEM")
+print("=" * 50)
 
-csv_file = open("data/transactions.csv", "a", newline="")
+total_transactions = 0
+fraud_transactions = 0
+safe_transactions = 0
 
-writer = csv.writer(csv_file)
+report_file = open("data/fraud_report.csv", "w", newline="")
+report_writer = csv.writer(report_file)
+report_writer.writerow(["Transaction_ID", "Amount", "Status"])
 
-print("\n🏦 BANK FRAUD DETECTION SYSTEM STARTED\n")
+with open("data/transactions.csv", "r") as file:
+    reader = csv.reader(file)
 
-fraud_count = 0
-safe_count = 0
+    for row in reader:
+        transaction_id = row[1]
+        amount = int(row[2])
+        status = row[3]
 
-for i in range(10):
+        total_transactions += 1
 
-    transaction_id = random.randint(1000, 9999)
+        if status == "FRAUD":
+            fraud_transactions += 1
+            print(f"🚨 FRAUD | ID: {transaction_id} | Amount: ₹{amount}")
 
-    amount = random.randint(1000, 100000)
+            report_writer.writerow([
+                transaction_id,
+                amount,
+                status
+            ])
+        else:
+            safe_transactions += 1
+            print(f"✅ SAFE  | ID: {transaction_id} | Amount: ₹{amount}")
 
-    time = datetime.now()
+report_file.close()
 
-    if amount > 50000:
-        status = "FRAUD"
-        fraud_count += 1
-    else:
-        status = "SAFE"
-        safe_count += 1
+print("\n" + "=" * 50)
+print("SUMMARY REPORT")
+print("=" * 50)
 
-    writer.writerow([time, transaction_id, amount, status])
+print(f"Total Transactions : {total_transactions}")
+print(f"Fraud Transactions : {fraud_transactions}")
+print(f"Safe Transactions  : {safe_transactions}")
 
-    message = f"{time} | Transaction ID: {transaction_id} | Amount: ₹{amount} | {status}"
-
-    print(message)
-
-    log_file.write(message + "\n")
-
-log_file.close()
-
-csv_file.close()
-
-print("\n✅ Scan Completed")
-
-print("\n📊 FINAL REPORT")
-print(f"🚨 Fraud Transactions: {fraud_count}")
-print(f"✅ Safe Transactions: {safe_count}")
-
-
-
-
-
-
+print("\nFraud report saved to data/fraud_report.csv")
+print("Analysis Completed Successfully ✅")
