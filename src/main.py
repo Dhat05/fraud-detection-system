@@ -1,49 +1,28 @@
-import csv
+import pandas as pd
+import matplotlib.pyplot as plt
 
-print("=" * 50)
-print("      BANK FRAUD DETECTION SYSTEM")
-print("=" * 50)
+df = pd.read_csv(
+    "data/transactions.csv",
+    header=None,
+    names=["Timestamp", "Transaction_ID", "Amount", "Status"]
+)
 
-total_transactions = 0
-fraud_transactions = 0
-safe_transactions = 0
+fraud_count = (df["Status"] == "FRAUD").sum()
+safe_count = (df["Status"] == "SAFE").sum()
 
-report_file = open("data/fraud_report.csv", "w", newline="")
-report_writer = csv.writer(report_file)
-report_writer.writerow(["Transaction_ID", "Amount", "Status"])
+print("\n===== FRAUD ANALYSIS REPORT =====")
+print(f"Total Transactions : {len(df)}")
+print(f"Fraud Transactions : {fraud_count}")
+print(f"Safe Transactions  : {safe_count}")
 
-with open("data/transactions.csv", "r") as file:
-    reader = csv.reader(file)
+plt.figure(figsize=(6,4))
+plt.bar(["Fraud", "Safe"], [fraud_count, safe_count])
 
-    for row in reader:
-        transaction_id = row[1]
-        amount = int(row[2])
-        status = row[3]
+plt.title("Fraud Detection Analysis")
+plt.xlabel("Transaction Type")
+plt.ylabel("Count")
 
-        total_transactions += 1
+plt.savefig("screenshots/fraud_chart.png")
 
-        if status == "FRAUD":
-            fraud_transactions += 1
-            print(f"🚨 FRAUD | ID: {transaction_id} | Amount: ₹{amount}")
-
-            report_writer.writerow([
-                transaction_id,
-                amount,
-                status
-            ])
-        else:
-            safe_transactions += 1
-            print(f"✅ SAFE  | ID: {transaction_id} | Amount: ₹{amount}")
-
-report_file.close()
-
-print("\n" + "=" * 50)
-print("SUMMARY REPORT")
-print("=" * 50)
-
-print(f"Total Transactions : {total_transactions}")
-print(f"Fraud Transactions : {fraud_transactions}")
-print(f"Safe Transactions  : {safe_transactions}")
-
-print("\nFraud report saved to data/fraud_report.csv")
-print("Analysis Completed Successfully ✅")
+print("\nChart saved successfully!")
+print("Location: screenshots/fraud_chart.png")
