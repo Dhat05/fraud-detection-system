@@ -7,13 +7,24 @@ df = pd.read_csv(
     names=["Timestamp", "Transaction_ID", "Amount", "Status"]
 )
 
-fraud_count = (df["Status"] == "FRAUD").sum()
-safe_count = (df["Status"] == "SAFE").sum()
+fraud_df = df[df["Status"] == "FRAUD"]
+safe_df = df[df["Status"] == "SAFE"]
+
+fraud_count = len(fraud_df)
+safe_count = len(safe_df)
 
 print("\n===== FRAUD ANALYSIS REPORT =====")
+
 print(f"Total Transactions : {len(df)}")
 print(f"Fraud Transactions : {fraud_count}")
 print(f"Safe Transactions  : {safe_count}")
+
+print("\n===== STATISTICS =====")
+
+print(f"Maximum Amount     : ₹{df['Amount'].max()}")
+print(f"Minimum Amount     : ₹{df['Amount'].min()}")
+print(f"Average Amount     : ₹{df['Amount'].mean():.2f}")
+print(f"Total Fraud Amount : ₹{fraud_df['Amount'].sum()}")
 
 plt.figure(figsize=(6,4))
 plt.bar(["Fraud", "Safe"], [fraud_count, safe_count])
@@ -24,5 +35,16 @@ plt.ylabel("Count")
 
 plt.savefig("screenshots/fraud_chart.png")
 
-print("\nChart saved successfully!")
-print("Location: screenshots/fraud_chart.png")
+plt.figure(figsize=(6,6))
+plt.pie(
+    [fraud_count, safe_count],
+    labels=["Fraud", "Safe"],
+    autopct="%1.1f%%"
+)
+
+plt.title("Fraud vs Safe Transactions")
+plt.savefig("screenshots/fraud_pie_chart.png")
+
+print("\nCharts saved successfully!")
+print("screenshots/fraud_chart.png")
+print("screenshots/fraud_pie_chart.png")
