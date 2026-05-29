@@ -1,23 +1,23 @@
-
 from fastapi import FastAPI
+import joblib
 
 app = FastAPI()
 
+model = joblib.load("fraud_model.pkl")
+
 @app.get("/")
 def home():
-    return {
-        "message": "Fraud Detection API is running",
-        "developer": "Spark"
-    }
+    return {"message": "AI Fraud Detection API"}
 
 @app.get("/health")
 def health():
-    return {
-        "status": "healthy"
-    }
-@app.get("/check/{amount}")
-def check_fraud(amount: int):
-    if amount > 50000:
-        return {"amount": amount, "risk": "HIGH"}
+    return {"status": "healthy"}
 
-    return {"amount": amount, "risk": "LOW"}
+@app.get("/predict/{amount}")
+def predict(amount: int):
+    prediction = model.predict([[amount]])[0]
+
+    return {
+        "amount": amount,
+        "fraud": bool(prediction)
+    }
